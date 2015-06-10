@@ -1,31 +1,20 @@
-@if (Session::has('error'))
-{{ trans(Session::get('reason')) }}
-@endif
-
-@if(Session::has('error_message'))
-<div class="alert alert-danger">
-  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-  {{ Session::get('error_message') }}
-</div>
-@endif
-{{ Form::open(array('route' => array('resetPass', $token)))  }}
-
-<p>{{ Form::label('email', 'Email') }}
-  {{ Form::text('email') }}</p>
-
-  <p>{{ Form::label('password', 'Password') }}
-    {{ Form::text('password') }}</p>
-
-    <p>{{ Form::label('password_confirmation', 'Password confirm') }}
-      {{ Form::text('password_confirmation') }}</p>
-
-      {{ Form::hidden('token', $token) }}
-
-      <p>{{ Form::submit('Submit') }}</p>
-
-      {{ Form::close() }}
-
-
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>INCAN Sistema de Control de Gestión</title>
+  <link rel="stylesheet" type="text/css" href="{{ asset('css/normalize.css') }}"/>
+  <link rel="stylesheet" href="{{ asset('bootstrap-3.2.0/css/bootstrap.min.css') }}">
+  <link href="{{ asset('css/dash.css') }}" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="{{ asset('css/buttons.css') }}"/>
+  <link rel="stylesheet" type="text/css" href="{{ asset('css/animate.css') }}"/>
+  <link rel="stylesheet" type="text/css" href="{{ asset('css/utils.css') }}"/>
+  <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+  
+</head>
+<body>
 <div class="container">
     <div class="row">
         <div class="row">
@@ -33,26 +22,29 @@
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <div class="text-center">
-                          <img src="https://cloud.digitalocean.com/assets/cloud-logo-0efc9110ac89b1ea38fc7ee2475a3e87.svg" class="login" height="70">
-                          <h3 class="text-center">Forgot Password?</h3>
-                          <p>If you have forgotten your password - reset it here.</p>
+                          <img src="https://d13yacurqjgara.cloudfront.net/users/76269/screenshots/796352/express_password.png" class="login" height="70">
+                          <h3 class="text-center">Recupera tu contraseña</h3>
                             <div class="panel-body">
-                              
-                              <form class="form"><!--start form--><!--add form action as needed-->
-                                <fieldset>
-                                  <div class="form-group">
-                                    <div class="input-group">
-                                      <span class="input-group-addon"><i class="glyphicon glyphicon-envelope color-blue"></i></span>
-                                      <!--EMAIL ADDRESS-->
-                                      <input id="emailInput" placeholder="email address" class="form-control" type="email" oninvalid="setCustomValidity('Please enter a valid email address!')" onchange="try{setCustomValidity('')}catch(e){}" required="">
-                                    </div>
-                                  </div>
-                                  <div class="form-group">
-                                    <input class="btn btn-lg btn-primary btn-block" value="Send My Password" type="submit">
-                                  </div>
-                                </fieldset>
-                              </form><!--/end form-->
-                              
+
+                              {{ Form::open(array('route' => array('resetPass', $token)))  }}
+
+                                <p>{{ Form::label('email', 'Email') }}
+                                  {{ Form::text('email') }}</p>
+
+                                <p>{{ Form::label('Nueva Contraseña', 'Nueva Contraseña') }}
+                                   {{ Form::password('password') }}</p>
+
+                                <p>{{ Form::label('password_confirmation', 'Confirmar Contraseña') }}
+                                   {{ Form::password('password_confirmation') }}</p>
+
+                                   {{ Form::hidden('token', $token) }}
+
+                                <div class="form-group">
+                                    <input class="btn btn-lg btn-primary btn-block" value="Guardar Contraseña" type="submit">
+                                </div>
+
+                              {{ Form::close() }}
+                                           
                             </div>
                         </div>
                     </div>
@@ -61,3 +53,11 @@
         </div>
     </div>
 </div>
+
+
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="{{ asset('bootstrap-3.2.0/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('bootstrap-3.2.0/js/docs.min.js') }}"></script>
+
+</html>

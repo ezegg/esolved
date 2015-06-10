@@ -43,6 +43,8 @@
                                   </div>
                                 </fieldset>
                               {{ Form::close() }}
+
+                              <p>Revisa tu email</p>
                               
                             </div>
                         </div>
