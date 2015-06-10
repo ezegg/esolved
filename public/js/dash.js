@@ -253,7 +253,24 @@ function getTaskDetailsById(id) {
                     var semaforo = "<th class='center'><button type='button' class='btn btn-success' style='border-radius:45%;'></button></th>";
                 };
 
+                if (item.directoryResponseFile.length>0) {
+                    var directoryResponseFile = "<a href='"+base_url+item.directoryResponseFile+"' download><i class='fa fa-cloud-upload'></i>Documento Respuesta</a>";
+                } else {
+                    var directoryResponseFile = "";
+                };
+
+                if (item.directoryFile.length>0) {
+                    var directoryFile = "<a href='"+base_url+item.directoryFile+"' download><i class='fa fa-cloud-download'></i>Documento Asignado</span></a>";
+                } else {
+                    var directoryFile = "";
+                };
+
                 model.append("<form method='POST' id='updateTask' action='" + base_url + "updateTask/" + item.id + "'  accept-charset='UTF-8' role='form' enctype='multipart/form-data' class='fluid'>" +
+                    "<div class='pull-right'>"+
+                    directoryFile+
+                    directoryResponseFile+
+                    "</div>"+
+                    "<br>" +
                     "<input name='admin_id' type='hidden' value='" + item.admin_id + "'>"+
                     "<label for='Folio'>Folio</label>" +
                     "<input id='folio' class='form-control' placeholder='Folio' autofocus='' name='folio' type='text' value='" + item.folio + "'>" +
@@ -298,8 +315,6 @@ function getTaskDetailsById(id) {
                     "<option>Atendido</option>" +
                     "<option>Finalizado</option>" +
                     "</select>" +
-                    "<a href='"+base_url+item.directoryFile+"' download><i class='fa fa-cloud-download'></i>Documento Asignado...</span></a>"+
-                    "<a href='"+base_url+item.directoryResponseFile+"' download><i class='fa fa-cloud-upload'></i>Documento Respuesta</a>"+
                     "<br>" +
                     "<br>" +
                     "<p class='center'>" +
@@ -335,7 +350,23 @@ function getTaskDetailsByIdOperative(id) {
                     var semaforo = "<th class='center'><button type='button' class='btn btn-success' style='border-radius:45%;'></button></th>";
                 };
 
+                if (item.directoryResponseFile.length>0) {
+                    var directoryResponseFile = "<a href='"+base_url+item.directoryResponseFile+"' download><i class='fa fa-cloud-upload'></i>Documento Respuesta</a>";
+                } else {
+                    var directoryResponseFile = "";
+                };
+
+                if (item.directoryFile.length>0) {
+                    var directoryFile = "<a href='"+base_url+item.directoryFile+"' download><i class='fa fa-cloud-download'></i>Documento Asignado</span></a>";
+                } else {
+                    var directoryFile = "";
+                };
+
                 model.append("<form method='POST' id='updateTask' action='" + base_url + "updateTask/" + item.id + "'  accept-charset='UTF-8' role='form' enctype='multipart/form-data' class='fluid'>" +
+                    "<div class='pull-right'>"+
+                    directoryFile+
+                    directoryResponseFile+
+                    "</div>"+
                     "<input name='admin_id' type='hidden' value='" + item.admin_id + "'>"+
                     "<input name='folio' type='hidden' value='" + item.folio + "'>"+
                     "<input name='oficio_referencia' type='hidden' value='" + item.oficio_referencia + "'>"+
@@ -372,8 +403,6 @@ function getTaskDetailsByIdOperative(id) {
                     "<option>Atendido</option>" +
                     "<option>Finalizado</option>" +
                     "</select>" +
-                    "<a href='"+base_url+item.directoryFile+"' download>Documento Asignado</a>"+
-                    "<a href='"+base_url+item.directoryResponseFile+"' download>Documento Respuesta</a>"+
                     "<br>" +
                     "<br>" +
                     "<input id='filePdf' name='filePdf' type='file'>"+
