@@ -298,8 +298,8 @@ function getTaskDetailsById(id) {
                     "<option>Atendido</option>" +
                     "<option>Finalizado</option>" +
                     "</select>" +
-                    "<a href='"+base_url+item.directoryFile+"' download>Documento Asignado</a>"+
-                    "<a href='"+base_url+item.directoryResponseFile+"' download>Documento Respuesta</a>"+
+                    "<a href='"+base_url+item.directoryFile+"' download><i class='fa fa-cloud-download'></i>Documento Asignado...</span></a>"+
+                    "<a href='"+base_url+item.directoryResponseFile+"' download><i class='fa fa-cloud-upload'></i>Documento Respuesta</a>"+
                     "<br>" +
                     "<br>" +
                     "<p class='center'>" +

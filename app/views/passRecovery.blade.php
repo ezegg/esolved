@@ -13,6 +13,7 @@
   <link rel="stylesheet" type="text/css" href="{{ asset('css/buttons.css') }}"/>
   <link rel="stylesheet" type="text/css" href="{{ asset('css/animate.css') }}"/>
   <link rel="stylesheet" type="text/css" href="{{ asset('css/utils.css') }}"/>
+  <link rel="stylesheet" type="text/css" href="{{ asset('css/font-awesome.min.css') }}" />
   <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
   
 </head>
