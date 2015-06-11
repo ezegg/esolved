@@ -66,17 +66,17 @@
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
             <li  id="liMain" class="active lis">
-              <a href="#" onclick="showView('main','ocultar');addClassActive('liMain','lis')">Tareas Asignadas <span class="sr-only">(current)</span></a>
+              <a href="#" onclick="showView('main','ocultar');addClassActive('liMain','lis')"><i class="fa fa-tasks"></i> Tareas Asignadas <span class="sr-only">(current)</span></a>
             </li>
             @if (Auth::user()->hasRole('super_admin'))
             <li id="liAsignarTarea" class="lis" onclick="addClassActive('liAsignarTarea','lis')">
-              <a href="#" onclick="showView('asignarTarea','ocultar');addClassActive('liAsignarTarea','lis')">Asignar Tareas</a>
+              <a href="#" onclick="showView('asignarTarea','ocultar');addClassActive('liAsignarTarea','lis')"><i class="fa fa-thumb-tack"></i> Asignar Tareas</a>
             </li>
             <li id="liRegistrarUsuario" class="lis">
-              <a href="#" onclick="showView('registrarUsuario','ocultar');addClassActive('liRegistrarUsuario','lis')">Crear Usuarios</a>
+              <a href="#" onclick="showView('registrarUsuario','ocultar');addClassActive('liRegistrarUsuario','lis')"><i class="fa fa-user-plus"></i> Crear Usuarios</a>
             </li>
             <li id="liListarUsuarios" class="lis">
-              <a href="#" onclick="showView('listarUsuarios','ocultar');addClassActive('liListarUsuarios','lis')">Listar Usuarios</a>
+              <a href="#" onclick="showView('listarUsuarios','ocultar');addClassActive('liListarUsuarios','lis')"><i class="fa fa-users"></i> Listar Usuarios</a>
             </li>
             <!--<li id="liLimpiarEspacio" class="lis">
               <a href="#" onclick="showView('limpiarEspacio','ocultar');addClassActive('liLimpiarEspacio','lis')">Limpiar DD</a>
