@@ -180,118 +180,139 @@
         </section>
 
       <section id="asignarTarea" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 ocultar spin" style="display:none" >
-          <div class="fluid">
-            
-            @if ($errors->any())
-              <div class="alert alert-danger">
-                <button type="button" class="close" data-dismiss="alert">&times;</button>
-                <strong>Por favor corrige los siguentes errores:</strong>
-                <ul>
-                @foreach ($errors->all() as $error)
-                  <li>{{ $error }}</li>
-                @endforeach
-                </ul>
+          
+        <div class="container top">
+          <div class="row">
+              <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                  <div class="panel panel-default">
+                    <div class="panel-body">
+        
+                      @if ($errors->any())
+                        <div class="alert alert-danger">
+                          <button type="button" class="close" data-dismiss="alert">&times;</button>
+                          <strong>Por favor corrige los siguentes errores:</strong>
+                          <ul>
+                          @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                          @endforeach
+                          </ul>
+                        </div>
+                      @endif
+                      
+                      {{ Form::open(['route' => 'asignarTarea', 'method' => 'POST', 'role' => 'form','files' => true]) }}
+                        {{ Form::hidden('admin_id', Auth::user()->id ) }}
+                        {{ Form::hidden('estatus', 'enproceso' ) }}
+                        </br>
+                        {{ Form::label('Folio', 'Folio')}}
+                        {{ Form::text('folio','', ['id' => 'folio', 'class' => 'form-control', 'placeholder' => 'Folio', 'autofocus' => '']) }}
+                        </br>
+                        {{ Form::label('Oficio Referencia', 'Oficio Referencia')}}
+                        {{ Form::text('oficio_referencia','', ['id' => 'oficio_referencia', 'class' => 'form-control', 'placeholder' => 'Oficio Referencia', 'autofocus' => '']) }}
+                        </br>
+                        {{ Form::label('Asunto', 'Asunto')}}
+                        {{ Form::text('asunto', '', ['id' => 'asunto', 'class' => 'form-control', 'placeholder' => 'Asunto', 'autofocus' => '']) }}
+                        </br>
+                        {{ Form::label('Fecha de Recepción', 'Fecha Recepción')}}
+                        {{ Form::custom('datepicker', 'date', 'fecha_recepcion') }}
+                        {{ Form::label('Fecha de respuesta', 'Fecha Respuesta')}}
+                        <!-- class , type, name -->
+                        {{ Form::custom('datepicker', 'date', 'fecha_respuesta') }}
+                        </br>
+                        {{ Form::label('Area Generadora', 'Area Generadora')}}
+                        {{ Form::text('area_generadora','', ['id' => 'area_generadora', 'class' => 'form-control', 'placeholder' => 'Area Generadora', 'autofocus' => '']) }}
+                        </br>
+                        {{ Form::label('Nombre del titular', 'Nombre del Titular')}}
+                        {{ Form::text('nombre_titular', '', ['id' => 'nombre_titular', 'class' => 'form-control', 'placeholder' => 'Nombre Titular', 'autofocus' => '']) }}
+                        </br>
+                        {{ Form::label('Asignado a', 'Asignado a')}}
+                        <select id="usuarios" name="user_id">
+                          <option>Por favor elige una opción</option>
+                        </select>
+                        </br>
+                        </br>
+                        {{ Form::label('Ubicación Topografica', 'Ubicación Topografica')}}
+                        {{ Form::text('ubicacion_topografica','', ['id' => 'ubicacion_topografica', 'class' => 'form-control', 'placeholder' => 'Ubicacion Topografica', 'autofocus' => '']) }}
+                        
+                        </br>
+                        {{ Form::label('Estatus', 'Estatus')}}
+                        <select id="estatus" name="estatus">
+                          <option>En seguimiento</option>
+                        </select>
+                        </br>
+                        </br>
+                        {{ Form::file('filePdf',  ['id' => 'filePdf']) }}
+                        </br>
+                        <p class="center">
+                          <input type="submit" value="Asignar Tarea" class="btn btn-success">
+                        </p>
+                      {{ Form::close() }}
+                    </div>
+                  </div>
+                </div>
               </div>
-            @endif
-            
-            {{ Form::open(['route' => 'asignarTarea', 'method' => 'POST', 'role' => 'form','files' => true]) }}
-              {{ Form::hidden('admin_id', Auth::user()->id ) }}
-              {{ Form::hidden('estatus', 'enproceso' ) }}
-              </br>
-              {{ Form::label('Folio', 'Folio')}}
-              {{ Form::text('folio','', ['id' => 'folio', 'class' => 'form-control', 'placeholder' => 'Folio', 'autofocus' => '']) }}
-              </br>
-              {{ Form::label('Oficio Referencia', 'Oficio Referencia')}}
-              {{ Form::text('oficio_referencia','', ['id' => 'oficio_referencia', 'class' => 'form-control', 'placeholder' => 'Oficio Referencia', 'autofocus' => '']) }}
-              </br>
-              {{ Form::label('Asunto', 'Asunto')}}
-              {{ Form::text('asunto', '', ['id' => 'asunto', 'class' => 'form-control', 'placeholder' => 'Asunto', 'autofocus' => '']) }}
-              </br>
-              {{ Form::label('Fecha de Recepción', 'Fecha Recepción')}}
-              {{ Form::custom('datepicker', 'date', 'fecha_recepcion') }}
-              {{ Form::label('Fecha de respuesta', 'Fecha Respuesta')}}
-              <!-- class , type, name -->
-              {{ Form::custom('datepicker', 'date', 'fecha_respuesta') }}
-              </br>
-              {{ Form::label('Area Generadora', 'Area Generadora')}}
-              {{ Form::text('area_generadora','', ['id' => 'area_generadora', 'class' => 'form-control', 'placeholder' => 'Area Generadora', 'autofocus' => '']) }}
-              </br>
-              {{ Form::label('Nombre del titular', 'Nombre del Titular')}}
-              {{ Form::text('nombre_titular', '', ['id' => 'nombre_titular', 'class' => 'form-control', 'placeholder' => 'Nombre Titular', 'autofocus' => '']) }}
-              </br>
-              {{ Form::label('Asignado a', 'Asignado a')}}
-              <select id="usuarios" name="user_id">
-                <option>Por favor elige una opción</option>
-              </select>
-              </br>
-              </br>
-              {{ Form::label('Ubicación Topografica', 'Ubicación Topografica')}}
-              {{ Form::text('ubicacion_topografica','', ['id' => 'ubicacion_topografica', 'class' => 'form-control', 'placeholder' => 'Ubicacion Topografica', 'autofocus' => '']) }}
-              
-              </br>
-              {{ Form::label('Estatus', 'Estatus')}}
-              <select id="estatus" name="estatus">
-                <option>En seguimiento</option>
-              </select>
-              </br>
-              </br>
-              {{ Form::file('filePdf',  ['id' => 'filePdf']) }}
-              </br>
-              <p class="center">
-                <input type="submit" value="Asignar" class="btn btn-success">
-              </p>
-            {{ Form::close() }}
+          </div>
         </div>
+     
       </section>
       <!--Vista que te permite crear un usuario-->
       <section id="registrarUsuario" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 ocultar spin" style="display:none" >
-          <div class="fluid">
-            @if ($errors->any())
-              <div class="alert alert-danger">
-                <button type="button" class="close" data-dismiss="alert">&times;</button>
-                <strong>Por favor corrige los siguentes errores:</strong>
-                <ul>
-                @foreach ($errors->all() as $error)
-                  <li>{{ $error }}</li>
-                @endforeach
-                </ul>
+        <div class="container top">
+          <div class="row">
+              <div class="row">
+                <div class="col-md-4 col-md-offset-4">
+                  <div class="panel panel-default">
+                    <div class="panel-body">
+                      @if ($errors->any())
+                        <div class="alert alert-danger">
+                          <button type="button" class="close" data-dismiss="alert">&times;</button>
+                          <strong>Por favor corrige los siguentes errores:</strong>
+                          <ul>
+                          @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                          @endforeach
+                          </ul>
+                        </div>
+                      @endif
+                     
+                      {{ Form::open(['route' => 'register', 'method' => 'POST', 'role' => 'form']) }}
+
+                      
+                      {{ Form::label('Nombre', 'Nombre')}}
+                      {{ Form::text('first_name', null, ['class' => 'form-control', 'placeholder' => 'Nombre', 'autofocus' => '']) }}
+
+                      {{ Form::label('Apellidos', 'Apellidos')}}
+                      {{ Form::text('last_name', null, ['class' => 'form-control', 'placeholder' => 'Apellidos', 'autofocus' => '']) }}
+
+                      {{ Form::label('Username', 'Username')}}
+                      {{ Form::text('username', null, ['class' => 'form-control', 'placeholder' => 'Username', 'autofocus' => '']) }}
+
+                      {{ Form::label('Email', 'Email')}}
+                      {{Form::text('email', null,['class' => 'form-control', 'placeholder' => 'Email', 'autofocus' => ''])}}
+
+                      {{ Form::label('password', 'password')}}
+                      {{ Form::password('password', ['class' => 'form-control', 'placeholder' => 'Contraseña']) }}
+
+                      <div class="checkbox">
+                        <label>
+                          {{ Form::checkbox('role', '1') }} Es administrador
+                      </div>
+
+                      <p class="center">
+                        <input type="submit" value="Registrar Usuario" class="btn btn-success">
+                      </p>
+                      {{ Form::close() }}
+                    </div>
+                  </div>
+                </div>
               </div>
-            @endif
-           
-            {{ Form::open(['route' => 'register', 'method' => 'POST', 'role' => 'form']) }}
-
-            
-            {{ Form::label('Nombre', 'Nombre')}}
-            {{ Form::text('first_name', null, ['class' => 'form-control', 'placeholder' => 'Nombre', 'autofocus' => '']) }}
-
-            {{ Form::label('Apellidos', 'Apellidos')}}
-            {{ Form::text('last_name', null, ['class' => 'form-control', 'placeholder' => 'Apellidos', 'autofocus' => '']) }}
-
-            {{ Form::label('Username', 'Username')}}
-            {{ Form::text('username', null, ['class' => 'form-control', 'placeholder' => 'Username', 'autofocus' => '']) }}
-
-            {{ Form::label('Email', 'Email')}}
-            {{Form::text('email', null,['class' => 'form-control', 'placeholder' => 'Email', 'autofocus' => ''])}}
-
-            {{ Form::label('password', 'password')}}
-            {{ Form::password('password', ['class' => 'form-control', 'placeholder' => 'Contraseña']) }}
-
-            <div class="checkbox">
-              <label>
-                {{ Form::checkbox('role', '1') }} Es administrador
             </div>
-
-            <p class="center">
-              <input type="submit" value="Registrar" class="btn btn-success">
-            </p>
-            {{ Form::close() }}
-
         </div>
       </section>
 
       <!--Vista lista los usuarios-->
       <section id="listarUsuarios" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 ocultar" style="display:none" >
-        <div class="fluid">
+        <div class="fluid top">
          
          <table class="table table-hover">
             <thead>

@@ -139,39 +139,42 @@ class TareasController extends BaseController {
         ));*/
     
     try {
-      if (Input::hasFile('filePdf'))
-      {
-          $file = Input::file('filePdf')->move($path, 'folio'.Input::get('folio').Input::file('filePdf')->getClientOriginalName() ); 
-      }
+      
       $data = Input::all();
       $task = Tarea::find($id);
       $task->fill($data);
-      $rutaFinal = '/respuestas' . '/' . date("Y")  . '/' . date("m") . '/' . date("d") . '/'.'folio'.Input::get('folio').Input::file('filePdf')->getClientOriginalName();
-      $task->directoryResponseFile = (string)$rutaFinal;
-      $task->save();
-      $id = Input::get('admin_id');
-      $user = User::find($id);
+      if (Input::hasFile('filePdf'))
+      {
+        $file = Input::file('filePdf')->move($path, 'folio'.Input::get('folio').Input::file('filePdf')->getClientOriginalName() ); 
+        $rutaFinal = '/respuestas' . '/' . date("Y")  . '/' . date("m") . '/' . date("d") . '/'.'folio'.Input::get('folio').Input::file('filePdf')->getClientOriginalName();
+        $task->directoryResponseFile = (string)$rutaFinal;
+        $task->save();
+        $id = Input::get('admin_id');
+        $user = User::find($id);
 
-      $folio = $task->folio;
-      $asunto = $task->asunto;
-      $oficio_referencia = $task->oficio_referencia; 
-      $fecha_respuesta = $task->fecha_respuesta;
-      $area_generadora = $task->area_generadora;   
-      $info = array
-          (
-          'folio'             =>  $folio,
-          'asunto'            =>  $asunto,
-          'oficio_referencia' =>  $oficio_referencia,
-          'fecha_respuesta'   =>  $fecha_respuesta,
-          'area_generadora'   =>  $area_generadora
-          );
+        $folio = $task->folio;
+        $asunto = $task->asunto;
+        $oficio_referencia = $task->oficio_referencia; 
+        $fecha_respuesta = $task->fecha_respuesta;
+        $area_generadora = $task->area_generadora;   
+        $info = array
+            (
+            'folio'             =>  $folio,
+            'asunto'            =>  $asunto,
+            'oficio_referencia' =>  $oficio_referencia,
+            'fecha_respuesta'   =>  $fecha_respuesta,
+            'area_generadora'   =>  $area_generadora
+            );
 
-      Mail::send('emails.updateTarea', $info, function($message) use ($user){
-        $message->to($user->email, $user->first_name.' '.$user->last_name)->subject('Tarea Actualizada');
-        $message->attach( public_path(). '/respuestas' . '/' . date("Y")  . '/' . date("m") . '/' . date("d") . '/'.'folio'.Input::get('folio').Input::file('filePdf')->getClientOriginalName());
-      });
-      
+        Mail::send('emails.updateTarea', $info, function($message) use ($user){
+          $message->to($user->email, $user->first_name.' '.$user->last_name)->subject('Tarea Actualizada');
+          $message->attach( public_path(). '/respuestas' . '/' . date("Y")  . '/' . date("m") . '/' . date("d") . '/'.'folio'.Input::get('folio').Input::file('filePdf')->getClientOriginalName());
+        });
+        
+        
+      }
       return Redirect::back();
+      
     } catch (Exception $e) {
       //return $e;
       return Response::json(array(

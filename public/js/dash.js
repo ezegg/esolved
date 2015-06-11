@@ -265,61 +265,72 @@ function getTaskDetailsById(id) {
                     var directoryFile = "";
                 };
 
-                model.append("<form method='POST' id='updateTask' action='" + base_url + "updateTask/" + item.id + "'  accept-charset='UTF-8' role='form' enctype='multipart/form-data' class='fluid'>" +
-                    "<div class='pull-right'>"+
-                    directoryFile+
-                    directoryResponseFile+
-                    "</div>"+
-                    "<br>" +
-                    "<input name='admin_id' type='hidden' value='" + item.admin_id + "'>"+
-                    "<label for='Folio'>Folio</label>" +
-                    "<input id='folio' class='form-control' placeholder='Folio' autofocus='' name='folio' type='text' value='" + item.folio + "'>" +
-                    "<br>" +
-                    "<label for='Oficio Referencia'>Oficio Referencia</label>" +
-                    "<input id='oficio_referencia' class='form-control' placeholder='Oficio Referencia' autofocus='' name='oficio_referencia' type='text' value='" + item.oficio_referencia + "'>" +
-                    "<br>" +
-                    "<label for='Asunto'>Asunto</label>" +
-                    "<input id='asunto' class='form-control' placeholder='Asunto' autofocus='' name='asunto' type='text' value='" + item.asunto + "'>" +
-                    "<br>" +
-                    "<label for='Fecha de Recepción'>Fecha de Recepción:" + item.fecha_recepcion + "</label>" +
-                    "<br>" +
-                    "<label for='Fecha de Recepción'>Actualizar Fecha de Recepción</label>" +
-                    "<input class='datepicker' type='date' name='fecha_recepcion' value='" + item.fecha_recepcion + "' id='fecha_recepcion'>" +
-                    "<br>" +
-                    "<br>" +
-                    "<label for='Fecha de Respuesta'>Fecha de Respuesta:" + item.fecha_respuesta + "</label>" +
-                    "<br>" +
-                    "<label for='Fecha de Respuesta'>Actualizar Fecha de Respuesta</label>" +
-                    "<label for='Fecha de respuesta'>Fecha Respuesta</label>" +
-                    "<!-- class , type, name -->" +
-                    "<input class='datepicker' type='date' name='fecha_respuesta' value='" + item.fecha_respuesta + "' id='fecha_respuesta'>" +
-                    "<br>" +
-                    "<label for='Area Generadora'>Area Generadora</label>" +
-                    "<input id='area_generadora' class='form-control' placeholder='Area Generadora' autofocus='' name='area_generadora' type='text' value='" + item.area_generadora + "'>" +
-                    "<br>" +
-                    "<label for='Nombre del titular'>Nombre del Titular</label>" +
-                    "<input id='nombre_titular' class='form-control' placeholder='Nombre Titular' autofocus='' name='nombre_titular' type='text' value='" + item.nombre_titular + "'>" +
-                    "<br>" +
-                    "<label for='Asignado a'>Asignado a</label>" +
-                    "<select id='usuarios' name='user_id'><option value='" + item.user_id + "'>" + item.first_name + "</option></select>" +
-                    "<br>" +
-                    "<br>" +
-                    "<label for='Ubicación Topografica'>Ubicación Topografica</label>" +
-                    "<input id='ubicacion_topografica' class='form-control' placeholder='Ubicacion Topografica' autofocus='' name='ubicacion_topografica' type='text' value='" + item.ubicacion_topografica + "'>" +
+                model.append(
+                    "<form method='POST' id='updateTask' action='" + base_url + "updateTask/" + item.id + "'  accept-charset='UTF-8' role='form' enctype='multipart/form-data' class='fluid' style='margin-top:5px;'>" +
+                        "<div class='container'>"+
+                            "<div class='row'>"+
+                                "<div class=''>"+
+                                    "<div class='panel panel-default'>"+
+                                        "<div class='panel-body'>"+
+                                            "<div class='pull-right'>"+
+                                                directoryFile+
+                                                directoryResponseFile+
+                                            "</div>"+
+                                            "<br>" +
+                                            "<input name='admin_id' type='hidden' value='" + item.admin_id + "'>"+
+                                            "<label for='Folio'>Folio</label>" +
+                                            "<input id='folio' class='form-control' placeholder='Folio' autofocus='' name='folio' type='text' value='" + item.folio + "'>" +
+                                            "<br>" +
+                                            "<label for='Oficio Referencia'>Oficio Referencia</label>" +
+                                            "<input id='oficio_referencia' class='form-control' placeholder='Oficio Referencia' autofocus='' name='oficio_referencia' type='text' value='" + item.oficio_referencia + "'>" +
+                                            "<br>" +
+                                            "<label for='Asunto'>Asunto</label>" +
+                                            "<input id='asunto' class='form-control' placeholder='Asunto' autofocus='' name='asunto' type='text' value='" + item.asunto + "'>" +
+                                            "<br>" +
+                                            "<label for='Fecha de Recepción'>Fecha de Recepción:" + item.fecha_recepcion + "</label>" +
+                                            "<br>" +
+                                            "<label for='Fecha de Recepción'>Actualizar Fecha de Recepción</label>" +
+                                            "<input class='datepicker' type='date' name='fecha_recepcion' value='" + item.fecha_recepcion + "' id='fecha_recepcion'>" +
+                                            "<br>" +
+                                            "<br>" +
+                                            "<label for='Fecha de Respuesta'>Fecha de Respuesta:" + item.fecha_respuesta + "</label>" +
+                                            "<br>" +
+                                            "<label for='Fecha de Respuesta'>Actualizar Fecha de Respuesta</label>" +
+                                            "<label for='Fecha de respuesta'>Fecha Respuesta</label>" +
+                                            "<!-- class , type, name -->" +
+                                            "<input class='datepicker' type='date' name='fecha_respuesta' value='" + item.fecha_respuesta + "' id='fecha_respuesta'>" +
+                                            "<br>" +
+                                            "<label for='Area Generadora'>Area Generadora</label>" +
+                                            "<input id='area_generadora' class='form-control' placeholder='Area Generadora' autofocus='' name='area_generadora' type='text' value='" + item.area_generadora + "'>" +
+                                            "<br>" +
+                                            "<label for='Nombre del titular'>Nombre del Titular</label>" +
+                                            "<input id='nombre_titular' class='form-control' placeholder='Nombre Titular' autofocus='' name='nombre_titular' type='text' value='" + item.nombre_titular + "'>" +
+                                            "<br>" +
+                                            "<label for='Asignado a'>Asignado a</label>" +
+                                            "<select id='usuarios' name='user_id'><option value='" + item.user_id + "'>" + item.first_name + "</option></select>" +
+                                            "<br>" +
+                                            "<br>" +
+                                            "<label for='Ubicación Topografica'>Ubicación Topografica</label>" +
+                                            "<input id='ubicacion_topografica' class='form-control' placeholder='Ubicacion Topografica' autofocus='' name='ubicacion_topografica' type='text' value='" + item.ubicacion_topografica + "'>" +
 
-                    "<br>" +
-                    "<label for='Estatus'>Estatus</label>" +
-                    "<select id='estatus' name='estatus'>" +
-                    "<option selected>"+item.estatus+"</option>" +
-                    "<option>En seguimiento</option>" +
-                    "<option>Atendido</option>" +
-                    "<option>Finalizado</option>" +
-                    "</select>" +
-                    "<br>" +
-                    "<br>" +
-                    "<p class='center'>" +
-                    "<input type='submit' value='Actualizar' class='btn btn-success'>" +
-                    "</p>" +
+                                            "<br>" +
+                                            "<label for='Estatus'>Estatus</label>" +
+                                            "<select id='estatus' name='estatus'>" +
+                                            "<option selected>"+item.estatus+"</option>" +
+                                            "<option>En seguimiento</option>" +
+                                            "<option>Atendido</option>" +
+                                            "<option>Finalizado</option>" +
+                                            "</select>" +
+                                            "<br>" +
+                                            "<br>" +
+                                            "<p class='center'>" +
+                                            "<input type='submit' value='Actualizar' class='btn btn-success'>" +
+                                            "</p>" +
+                                        "</div>"+
+                                    "</div>"+
+                                "</div>"+
+                            "</div>"+
+                        "</div>"+         
                     "</form>");
             }
         },
@@ -362,53 +373,69 @@ function getTaskDetailsByIdOperative(id) {
                     var directoryFile = "";
                 };
 
-                model.append("<form method='POST' id='updateTask' action='" + base_url + "updateTask/" + item.id + "'  accept-charset='UTF-8' role='form' enctype='multipart/form-data' class='fluid'>" +
-                    "<div class='pull-right'>"+
-                    directoryFile+
-                    directoryResponseFile+
-                    "</div>"+
-                    "<input name='admin_id' type='hidden' value='" + item.admin_id + "'>"+
-                    "<input name='folio' type='hidden' value='" + item.folio + "'>"+
-                    "<input name='oficio_referencia' type='hidden' value='" + item.oficio_referencia + "'>"+
-                    "<input name='asunto' type='hidden' value='" + item.asunto + "'>"+
-                    "<input name='fecha_recepcion' type='hidden' value='"+item.fecha_recepcion+"'>"+
-                    "<input name='fecha_respuesta' type='hidden' value='"+ item.fecha_respuesta +"'>"+
-                    "<input name='area_generadora' type='hidden' value='" + item.area_generadora + "'>"+
-                    "<input name='nombre_titular' type='hidden' value='" + item.nombre_titular + "'>"+
-                    "<input name='user_id' type='hidden' value='" + item.user_id + "'>"+
-                    "<input name='ubicacion_topografica' type='hidden' value='" + item.ubicacion_topografica + "'>"+
-                    "<input name='' type='hidden' value=''>"+
+                model.append(
+                    "<form method='POST' id='updateTask' action='" + base_url + "updateTask/" + item.id + "'  accept-charset='UTF-8' role='form' enctype='multipart/form-data' class='fluid'>" +
+                        "<div class='container'>"+
+                            "<div class='row'>"+
+                                    "<div class='col-md-5 col-md-offset-4'>"+
+                                        "<div class='panel panel-default'>"+
+                                            "<div class='panel-body'>"+
+                                                "<div>"+
+                                                    "<div class='text-center'>"+
+                                                        directoryFile+
+                                                        "<br>" +
+                                                        directoryResponseFile+
+                                                    "</div>"+
+                                                    "<br>" +
+                                                    "<input name='admin_id' type='hidden' value='" + item.admin_id + "'>"+
+                                                    "<input name='folio' type='hidden' value='" + item.folio + "'>"+
+                                                    "<input name='oficio_referencia' type='hidden' value='" + item.oficio_referencia + "'>"+
+                                                    "<input name='asunto' type='hidden' value='" + item.asunto + "'>"+
+                                                    "<input name='fecha_recepcion' type='hidden' value='"+item.fecha_recepcion+"'>"+
+                                                    "<input name='fecha_respuesta' type='hidden' value='"+ item.fecha_respuesta +"'>"+
+                                                    "<input name='area_generadora' type='hidden' value='" + item.area_generadora + "'>"+
+                                                    "<input name='nombre_titular' type='hidden' value='" + item.nombre_titular + "'>"+
+                                                    "<input name='user_id' type='hidden' value='" + item.user_id + "'>"+
+                                                    "<input name='ubicacion_topografica' type='hidden' value='" + item.ubicacion_topografica + "'>"+
+                                                    "<input name='' type='hidden' value=''>"+
 
-                    "<label for='Fecha de Recepción'>Folio: " + item.folio + "</label>" +
-                    "<br>" +
-                    "<label for='Fecha de Recepción'>Oficio Referencia:" + item.oficio_referencia + "</label>" +
-                    "<br>" +
-                    "<label for='Fecha de Recepción'>Asunto:" + item.asunto + "</label>" +
-                    "<br>" +
-                    "<label for='Fecha de Recepción'>Fecha de Recepción:" + item.fecha_recepcion + "</label>" +
-                    "<br>" +
-                    "<label for='Fecha de Recepción'>Fecha de Respuesta:" + item.fecha_respuesta + "</label>" +
-                    "<br>" +
-                    "<label for='Fecha de Recepción'>Area generadora:" + item.area_generadora + "</label>" +
-                    "<br>" +
-                    "<label for='Fecha de Recepción'Nombre titular:" + item.nombre_titular + "</label>" +
-                    "<br>" +
-                    "<label for='Fecha de Recepción'>Ubicacion topografica:" + item.ubicacion_topografica + "</label>" +
-
-                    "<br>" +
-                    "<label for='Estatus'>Estatus</label>" +
-                    "<select id='estatus' name='estatus'>" +
-                    "<option selected>"+item.estatus+"</option>" +
-                    "<option>En seguimiento</option>" +
-                    "<option>Atendido</option>" +
-                    "<option>Finalizado</option>" +
-                    "</select>" +
-                    "<br>" +
-                    "<br>" +
-                    "<input id='filePdf' name='filePdf' type='file'>"+
-                    "<p class='center'>" +
-                    "<input type='submit' value='Actualizar' class='btn btn-success'>" +
-                    "</p>" +
+                                                    "<label for='Fecha de Recepción'>Folio: " + item.folio + "</label>" +
+                                                    "<br>" +
+                                                    "<label for='Fecha de Recepción'>Oficio Referencia:" + item.oficio_referencia + "</label>" +
+                                                    "<br>" +
+                                                    "<label for='Fecha de Recepción'>Asunto:" + item.asunto + "</label>" +
+                                                    "<br>" +
+                                                    "<label for='Fecha de Recepción'>Fecha de Recepción:" + item.fecha_recepcion + "</label>" +
+                                                    "<br>" +
+                                                    "<label for='Fecha de Recepción'>Fecha de Respuesta:" + item.fecha_respuesta + "</label>" +
+                                                    "<br>" +
+                                                    "<label for='Fecha de Recepción'>Area generadora:" + item.area_generadora + "</label>" +
+                                                    "<br>" +
+                                                    "<label for='Fecha de Recepción'Nombre titular:" + item.nombre_titular + "</label>" +
+                                                    "<br>" +
+                                                    "<label for='Fecha de Recepción'>Ubicacion topografica:" + item.ubicacion_topografica + "</label>" +
+                                                    "<br>" +                                                
+                                                    "<label for='Estatus'>Estatus</label>" +
+                                                    "<select id='estatus' name='estatus'>" +
+                                                    "<option selected>"+item.estatus+"</option>" +
+                                                    "<option>En seguimiento</option>" +
+                                                    "<option>Atendido</option>" +
+                                                    "<option>Finalizado</option>" +
+                                                    "</select>" +
+                                                    "<br>" +
+                                                    "<br>" +
+                                                    "<input id='filePdf' name='filePdf' type='file'>"+
+                                                    "<br>" +
+                                                    "<p class='center'>" +
+                                                    "<input type='submit' value='Actualizar Tarea' class='btn btn-success'>" +
+                                                    "</p>" +
+                                                  
+                                                "</div>"+
+                                            "</div>"+
+                                        "</div>"+
+                                    "</div>"+
+                                "</div>"+
+                        "</div>"+                    
                     "</form>");
             }
         },
