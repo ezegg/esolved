@@ -46,7 +46,7 @@ class UserController extends BaseController {
       }
 
       Mail::send('emails.welcome', array('first_name'=>Input::get('first_name')), function($message){
-        $message->to(Input::get('email'), Input::get('first_name').' '.Input::get('last_name'))->subject('Welcome to AuthLaravelSimple');
+        $message->to(Input::get('email'), Input::get('first_name').' '.Input::get('last_name'))->subject('Bienvenido al Sistema de Gestión Incan');
       });
 
       if($newUser){

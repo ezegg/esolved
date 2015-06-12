@@ -1,7 +1,3 @@
-<h1>Hi, {{ $first_name }}!</h1>
-
-<p></p>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,135 +7,46 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Bienvenido a Sistema de Control de Gestión</title>
 	
-<link rel="stylesheet" type="text/css" href="stylesheets/email.css" />
+<link rel="stylesheet" type="text/css" href="{{ asset('css/normalize.css') }}"/>
+<link rel="stylesheet" href="{{ asset('bootstrap-3.2.0/css/bootstrap.min.css') }}">
+<link href="{{ asset('css/dash.css') }}" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="{{ asset('css/buttons.css') }}"/>
+<link rel="stylesheet" type="text/css" href="{{ asset('css/animate.css') }}"/>
+<link rel="stylesheet" type="text/css" href="{{ asset('css/utils.css') }}"/>
+<link rel="stylesheet" type="text/css" href="{{ asset('css/font-awesome.min.css') }}" />
 
 </head>
- 
-<body bgcolor="#FFFFFF">
 
-<!-- HEADER -->
-<table class="head-wrap" bgcolor="#999999">
-	<tr>
-		<td></td>
-		<td class="header container">
-			
-				<div class="content">
-					<table bgcolor="#999999">
-					<tr>
-						<td><img src="http://placehold.it/200x50/" /></td>
-						<td align="right"><h6 class="collapse">Hola {{ $first_name }}</h6></td>
-					</tr>
-				</table>
-				</div>
-				
-		</td>
-		<td></td>
-	</tr>
-</table><!-- /HEADER -->
+<style>
+	.img{
+		background-image: url({{asset('img/incan.jpg')}});
+	}
+	.black{
+		background-color: black;
+		color: white;
+	}
 
+	
 
-<!-- BODY -->
-<table class="body-wrap">
-	<tr>
-		<td></td>
-		<td class="container" bgcolor="#FFFFFF">
+</style>
 
-			<div class="content">
-			<table>
-				<tr>
-					<td>
-						
-						<h3>Welcome, Elijah Baily</h3>
-						<p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et.</p>
-						
-						<!-- A Real Hero (and a real human being) -->
-						<p><img src="http://placehold.it/600x300" /></p><!-- /hero -->
-						
-						<!-- Callout Panel -->
-						<p class="callout">
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt. <a href="#">Do it Now! &raquo;</a>
-						</p><!-- /Callout Panel -->
-						
-						<h3>Title Ipsum <small>This is a note.</small></h3>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-						<a class="btn">Click Me!</a>
-												
-						<br/>
-						<br/>							
-												
-						<!-- social & contact -->
-						<table class="social" width="100%">
-							<tr>
-								<td>
-									
-									<!--- column 1 -->
-									<table align="left" class="column">
-										<tr>
-											<td>				
-												
-												<h5 class="">Connect with Us:</h5>
-												<p class=""><a href="#" class="soc-btn fb">Facebook</a> <a href="#" class="soc-btn tw">Twitter</a> <a href="#" class="soc-btn gp">Google+</a></p>
-						
-												
-											</td>
-										</tr>
-									</table><!-- /column 1 -->	
-									
-									<!--- column 2 -->
-									<table align="left" class="column">
-										<tr>
-											<td>				
-																			
-												<h5 class="">Contact Info:</h5>												
-												<p>Phone: <strong>408.341.0600</strong><br/>
-                Email: <strong><a href="emailto:hseldon@trantor.com">hseldon@trantor.com</a></strong></p>
-                
-											</td>
-										</tr>
-									</table><!-- /column 2 -->
-									
-									<span class="clear"></span>	
-									
-								</td>
-							</tr>
-						</table><!-- /social & contact -->
-					
-					
-					</td>
-				</tr>
-			</table>
-			</div>
-									
-		</td>
-		<td></td>
-	</tr>
-</table><!-- /BODY -->
+<body>
+	<div id="picture"></div>
+	<h1>Misty Background <br> Experiment</h1>
+	<div id="layer2"></div>
+	<div id="layer1"></div>
 
-<!-- FOOTER -->
-<table class="footer-wrap">
-	<tr>
-		<td></td>
-		<td class="container">
-			
-				<!-- content -->
-				<div class="content">
-				<table>
-				<tr>
-					<td align="center">
-						<p>
-							<a href="#">Terms</a> |
-							<a href="#">Privacy</a> |
-							<a href="#"><unsubscribe>Unsubscribe</unsubscribe></a>
-						</p>
-					</td>
-				</tr>
-			</table>
-				</div><!-- /content -->
-				
-		</td>
-		<td></td>
-	</tr>
-</table><!-- /FOOTER -->
-
+	<header class="img" style="background-image:url({{asset('img/incan.jpg')}})">
+        <div class="container">
+            <div class="intro-text">
+                <div class="intro-lead-in black">Bienvenido al Sistema de Gestión INCan <p>{{ $first_name }}</p></div>
+                <div class="intro-heading black">Un gusto tenerte con nosotros</div>
+                <a href="#services" class="page-scroll btn btn-xl">@ezeezegg</a>
+            </div>
+        </div>
+    </header>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="{{ asset('bootstrap-3.2.0/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('bootstrap-3.2.0/js/docs.min.js') }}"></script>
 </body>
 </html>
