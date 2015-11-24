@@ -38,7 +38,10 @@ Route::group(['before' => 'auth'], function()
 
 	Route::post('uploadImage', ['as' => 'uploadImage', 'uses' => 'UserController@uploadImage' ] );
 
-	Route::post('createClass', ['as' => 'createClass', 'uses' => 'TareasController@saveTarea' ] );
+	Route::post('createClass', ['as' => 'createClass', 'uses' => 'MateriaController@createClass' ] );
+
+
+
 
 	Route::get('getUsers', 'UserController@getUsers');
 	Route::get('getTasks', 'TareasController@getTasks');

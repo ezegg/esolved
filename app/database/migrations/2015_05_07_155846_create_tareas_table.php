@@ -18,10 +18,10 @@ class CreateTareasTable extends Migration {
 			$table->increments('id')->unsigned();
 			$table->integer('nombre')->nullable()->unique();
 			$table->string('creditos')->nullable();
-			$table->dateTime('hora_inicio')->nullable();
-			$table->dateTime('hora_fin')->nullable();
-			$table->integer('user_id')->unsigned();
-      $table->foreign('user_id')->references('id')->on('users');
+			$table->time('hora_inicio')->nullable();
+			$table->time('hora_fin')->nullable();
+			/*$table->integer('user_id')->unsigned();
+      $table->foreign('user_id')->references('id')->on('users');*/
 
 		});
 	}

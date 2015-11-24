@@ -60,10 +60,41 @@ function addClassActive(id) {
     $('.nav-sidebar > li#' + id).addClass('active');
 }
 
+/******************* esolved **************************/
 
+function saveClass(){
+    var target = document.getElementById('createClass');
+    var spinner = new Spinner(opts).spin(target);
 
+    var nombre = $('#nombre').val();
+    var creditos = $('#creditos').val();
+    var hora_inicio = $('.hora_inicio').val();
+    var hora_fin = $('.hora_fin').val();
+    var DATA = 'nombre='+nombre+'&creditos='+creditos+'&hora_inicio='+hora_inicio+'&hora_fin'+hora_fin;
+    //alert(DATA)
+    $.ajax({
+        url: base_url+'createClass',
+        type: 'POST',
+        data: DATA,
+        contentType: 'application/x-www-form-urlencoded',
+        success: function(data){
+            if (data.error) {
+                generate('error', 'Lo siento no es posible rechazar esta tarea');
+            } else{
+                generate('success', 'Tarea rechazada correctamente, espera la validación');
 
+            };
+            //alert(data)
+            spinner.stop();
 
+        },
+        error: function( xhr, ajaxOptions, thrownError ){
+            spinner.stop();
+            generate('error', 'Lo siento no es posible rechazar esta tarea');
+        }
+    });
+}
+/******************************************************/
 function getUsers() {
     //console.debug('va a cambiar');
     $.ajax({
