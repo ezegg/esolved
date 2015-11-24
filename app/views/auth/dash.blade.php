@@ -121,7 +121,7 @@
               </tbody>
             </table>
           @endif
-          @if (Auth::user()->hasRole('admin'))
+          @if (Auth::user()->hasRole('alumno'))
             <table class="table table-hover">
               <thead>
                 <tr>
@@ -215,6 +215,9 @@
                         </br>
                         {{ Form::label('End Date', 'End Date')}}
                         {{ Form::custom('hora_fin', 'time', 'hora_fin') }}
+                        </br>
+                        {{ Form::label('Required', 'Required')}}
+                        <input type="checkbox" name="obligatorio" value="1">
                         <p class="center">
                           <input type="submit" value="Save Class" class="btn btn-success">
                         </p>

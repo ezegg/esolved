@@ -39,7 +39,7 @@ class MateriaController extends \BaseController {
 	public function getClassesByAdministrador()
   {
     $classes = DB::table('materias')
-      ->get(['id', 'nombre','creditos', 'hora_inicio', 'hora_fin']);
+      ->get(['id', 'nombre','creditos', 'hora_inicio', 'hora_fin', 'obligatorio']);
     return Response::json(array(
       'classes' =>  $classes
     ));

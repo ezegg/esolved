@@ -109,10 +109,17 @@ function getClassesByAdministrador() {
             model.empty();
             for (var i in data.classes) {
               var item = data.classes[i];
+
+              if (item.obligatorio == 1) {
+                var required = "<th class='center'><span>Required</span></th>";
+              } else {
+                var required = "<th class='center'></th>";
+              }
               model.append("<tr><th class='center'>" + item.nombre + "</th>" +
                   "<th class='center'>" + item.creditos + "</th>" +
                   "<th class='center'>" + item.hora_inicio + "</th>" +
                   "<th class='center'>" + item.hora_fin + "</th>"+
+                  required+
                   "<th class='center'><button type='button' class='btn btn-danger' onclick='showDeleteClass(" + item.id + ")'>Delete</button></th>");
             }
         },
