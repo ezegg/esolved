@@ -22,9 +22,9 @@ function generate(type, text) {
     });
 }
 
-function notyButtonsDeleteUser(type, layout, id) {
+function notyButtonsDeleteClass(type, layout, id) {
     var n = noty({
-        text        : 'Confirmación',
+        text        : 'Confirm',
         type        : type,
         dismissQueue: true,
         layout      : layout,
@@ -33,10 +33,10 @@ function notyButtonsDeleteUser(type, layout, id) {
             {addClass: 'btn btn-primary', text: 'Ok', onClick: function ($noty) {
                 $noty.close();
                 //noty({dismissQueue: true, force: true, layout: layout, theme: 'defaultTheme', text: 'Lo has confirmado', type: 'success'});
-                deleteUser(id);
+                deleteClass(id);
             }
             },
-            {addClass: 'btn btn-danger', text: 'Cancelar', onClick: function ($noty) {
+            {addClass: 'btn btn-danger', text: 'Cancel', onClick: function ($noty) {
                 $noty.close();
                 //noty({dismissQueue: true, force: true, layout: layout, theme: 'defaultTheme', text: 'Cancelado', type: 'error'});
             }

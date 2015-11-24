@@ -109,14 +109,14 @@
                   <th class="center">Name Class</th>
                   <th class="center">Credits</th>
                   <th class="center">Start Date</th>
-                  <th class="center">End Sate</th>
+                  <th class="center">End Date</th>
                   <th class="center"></th>
                   <th class="center"></th>
                   <th class="center"></th>
 
                 </tr>
               </thead>
-              <tbody id="tasksSuperAdmin" style="font-size:12px;">
+              <tbody id="classesAministrador" style="font-size:12px;">
 
               </tbody>
             </table>
@@ -216,7 +216,7 @@
                         {{ Form::label('End Date', 'End Date')}}
                         {{ Form::custom('hora_fin', 'time', 'hora_fin') }}
                         <p class="center">
-                          <input type="submit" value="Asignar Tarea" class="btn btn-success">
+                          <input type="submit" value="Save Class" class="btn btn-success">
                         </p>
                       {{ Form::close() }}
                     </div>

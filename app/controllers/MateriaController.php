@@ -31,10 +31,24 @@ class MateriaController extends \BaseController {
 
         $newTarea = Materia::create(Input::all());
         $newTarea->save();
-        return Redirect::back();
+        return Redirect::to('dash')->withErrors($validation);
     }
 
   }
 
+	public function getClassesByAdministrador()
+  {
+    $classes = DB::table('materias')
+      ->get(['id', 'nombre','creditos', 'hora_inicio', 'hora_fin']);
+    return Response::json(array(
+      'classes' =>  $classes
+    ));
+  }
+
+	public function deleteClass($id){
+    //var_dump($id);
+    $user = Materia::find($id);
+    $user->delete();
+  }
 
 }

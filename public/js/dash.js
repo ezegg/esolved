@@ -1,4 +1,4 @@
-var base_url = 'http://172.16.71.230/authLaravelSimple/public/';
+var base_url = 'http://localhost/esolved/public/';
 /*Necesario para el spinner*/
 var opts = {
     lines: 15, // The number of lines to draw
@@ -27,7 +27,10 @@ function loadSpinner() {
 }
 
 $(document).ready(function() {
-    getUsers();
+    getClassesByAdministrador();
+
+
+    /*getUsers();
     getTasks();
     getTasksSuperAdmin();
     listUsers();
@@ -35,7 +38,7 @@ $(document).ready(function() {
         dateFormat: 'yy-mm-dd'
     });
     $("form").submit(function(event) {
-        var targe4 = document.getElementById('main');
+        var target4 = document.getElementById('main');
         var target = document.getElementById('asignarTarea');
         var target1 = document.getElementById('updateUser');
         var target2 = document.getElementById('registrarUsuario');
@@ -45,7 +48,7 @@ $(document).ready(function() {
         var spinner2 = new Spinner(opts).spin(target2);
         var spinner3 = new Spinner(opts).spin(target3);
         var spinner4 = new Spinner(opts).spin(target4);
-    });
+    });*/
 });
 
 function showView(id, clases) {
@@ -62,7 +65,7 @@ function addClassActive(id) {
 
 /******************* esolved **************************/
 
-function saveClass(){
+/*function createClass(){
     var target = document.getElementById('createClass');
     var spinner = new Spinner(opts).spin(target);
 
@@ -70,8 +73,8 @@ function saveClass(){
     var creditos = $('#creditos').val();
     var hora_inicio = $('.hora_inicio').val();
     var hora_fin = $('.hora_fin').val();
-    var DATA = 'nombre='+nombre+'&creditos='+creditos+'&hora_inicio='+hora_inicio+'&hora_fin'+hora_fin;
-    //alert(DATA)
+    var DATA = 'nombre='+nombre+'&creditos='+creditos+'&hora_inicio='+hora_inicio+'&hora_fin='+hora_fin;
+    alert(DATA)
     $.ajax({
         url: base_url+'createClass',
         type: 'POST',
@@ -79,9 +82,9 @@ function saveClass(){
         contentType: 'application/x-www-form-urlencoded',
         success: function(data){
             if (data.error) {
-                generate('error', 'Lo siento no es posible rechazar esta tarea');
+                generate('error', 'error');
             } else{
-                generate('success', 'Tarea rechazada correctamente, espera la validación');
+                generate('success', 'Success');
 
             };
             //alert(data)
@@ -93,7 +96,54 @@ function saveClass(){
             generate('error', 'Lo siento no es posible rechazar esta tarea');
         }
     });
+}*/
+
+function getClassesByAdministrador() {
+    //console.debug('va a cambiar');
+    $.ajax({
+        type: "GET",
+        url: base_url + "getClassesByAdministrador",
+        success: function(data) {
+            //console.log(data);
+            var model = $('#classesAministrador');
+            model.empty();
+            for (var i in data.classes) {
+              var item = data.classes[i];
+              model.append("<tr><th class='center'>" + item.nombre + "</th>" +
+                  "<th class='center'>" + item.creditos + "</th>" +
+                  "<th class='center'>" + item.hora_inicio + "</th>" +
+                  "<th class='center'>" + item.hora_fin + "</th>"+
+                  "<th class='center'><button type='button' class='btn btn-danger' onclick='showDeleteClass(" + item.id + ")'>Delete</button></th>");
+            }
+        },
+        error: function(xhr, ajaxOptions, thrownError) {
+            generate('error', 'Lo siento no fue posible mostrar los usuarios');
+        }
+    });
 }
+
+function showDeleteClass(id){
+    notyButtonsDeleteClass('error', 'topCenter', id);
+}
+
+function deleteClass(id) {
+    var target = document.getElementById('listUsers');
+    var spinner = new Spinner(opts).spin(target);
+    $.ajax({
+        type: "GET",
+        url: base_url + "deleteClass/" + id,
+        success: function(data) {
+            generate('success', 'Class delete Succes');
+            spinner.stop();
+            getClassesByAdministrador();
+        },
+        error: function(xhr, ajaxOptions, thrownError) {
+            spinner.stop();
+            generate('error', 'error');
+        }
+    });
+}
+
 /******************************************************/
 function getUsers() {
     //console.debug('va a cambiar');
