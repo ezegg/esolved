@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>INCAN Sistema de Control de Gestión</title>
+  <title>esolved</title>
   <link rel="stylesheet" type="text/css" href="{{ asset('css/normalize.css') }}"/>
   <link rel="stylesheet" href="{{ asset('bootstrap-3.2.0/css/bootstrap.min.css') }}">
   <link href="{{ asset('css/dash.css') }}" rel="stylesheet">
@@ -13,7 +13,7 @@
   <link rel="stylesheet" type="text/css" href="{{ asset('css/utils.css') }}"/>
   <link rel="stylesheet" type="text/css" href="{{ asset('css/font-awesome.min.css') }}" />
   <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
-  
+
 </head>
 <body>
 
@@ -26,7 +26,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Sistema de Control de Gestión</a>
+          <a class="navbar-brand" href="#">Management Class</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
@@ -52,11 +52,11 @@
             </li>-->
             @if(Auth::check())
               <li><a href="#">{{ Auth::user()->first_name }}</a></li>
-              <li><a href="#" onclick="showView('updateUser','ocultar')">Perfil</a></li>
-              <li><a href="{{ action('AuthController@logout') }}">Cerrar Sesión</a></li>
+              <li><a href="#" onclick="showView('updateUser','ocultar')">Profile</a></li>
+              <li><a href="{{ action('AuthController@logout') }}">Logout</a></li>
             @endif
           </ul>
-            
+
         </div>
       </div>
     </nav>
@@ -66,14 +66,14 @@
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
             <li  id="liMain" class="active lis">
-              <a href="#" onclick="showView('main','ocultar');addClassActive('liMain','lis')"><i class="fa fa-tasks"></i> Tareas Asignadas <span class="sr-only">(current)</span></a>
+              <a href="#" onclick="showView('main','ocultar');addClassActive('liMain','lis')"><i class="fa fa-tasks"></i> class available<span class="sr-only">(current)</span></a>
             </li>
-            @if (Auth::user()->hasRole('super_admin'))
+            @if (Auth::user()->hasRole('administrador'))
             <li id="liAsignarTarea" class="lis" onclick="addClassActive('liAsignarTarea','lis')">
-              <a href="#" onclick="showView('asignarTarea','ocultar');addClassActive('liAsignarTarea','lis')"><i class="fa fa-thumb-tack"></i> Asignar Tareas</a>
+              <a href="#" onclick="showView('createClass','ocultar');addClassActive('liAsignarTarea','lis')"><i class="fa fa-thumb-tack"></i> Create class</a>
             </li>
             <li id="liRegistrarUsuario" class="lis">
-              <a href="#" onclick="showView('registrarUsuario','ocultar');addClassActive('liRegistrarUsuario','lis')"><i class="fa fa-user-plus"></i> Crear Usuarios</a>
+              <a href="#" onclick="showView('registrarUsuario','ocultar');addClassActive('liRegistrarUsuario','lis')"><i class="fa fa-user-plus"></i> Create Users</a>
             </li>
             <li id="liListarUsuarios" class="lis">
               <a href="#" onclick="showView('listarUsuarios','ocultar');addClassActive('liListarUsuarios','lis')"><i class="fa fa-users"></i> Listar Usuarios</a>
@@ -91,7 +91,7 @@
         <div id="main" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 ocultar">
           <div class="container-fluid">
 
-            <h3 class="page-header page-header col-md-8">Historial de Tareas Asignadas</h3>
+            <h3 class="page-header page-header col-md-8">Hi</h3>
 
             <div class="col-md-4 container-fluid top">
               {{ Form::open(['route' => 'search', 'method' => 'GET', 'files' => true,'role' => 'form', 'class' => 'col-md-7']) }}
@@ -102,22 +102,22 @@
               </p>
             </div>
           </div>
-          @if (Auth::user()->hasRole('super_admin'))
+          @if (Auth::user()->hasRole('administrador'))
             <table class="table table-hover">
               <thead>
                 <tr>
-                  <th class="center">Folio</th>
-                  <th class="center">Oficio Referencia </th>
-                  <th class="center">Asunto</th>
-                  <th class="center">Asignado a</th>
-                  <th class="center">Semáforo</th>
+                  <th class="center">Name Class</th>
+                  <th class="center">Credits</th>
+                  <th class="center">Start Date</th>
+                  <th class="center">End Sate</th>
                   <th class="center"></th>
                   <th class="center"></th>
-                  
+                  <th class="center"></th>
+
                 </tr>
               </thead>
               <tbody id="tasksSuperAdmin" style="font-size:12px;">
-                
+
               </tbody>
             </table>
           @endif
@@ -132,11 +132,11 @@
                   <th class="center">Semáforo</th>
                   <th class="center"></th>
                   <th class="center"></th>
-                  
+
                 </tr>
               </thead>
               <tbody id="tasks" style="font-size:12px;">
-                
+
               </tbody>
             </table>
           @endif
@@ -179,19 +179,19 @@
           </div>
         </section>
 
-      <section id="asignarTarea" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 ocultar spin" style="display:none" >
-          
+      <section id="createClass" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 ocultar spin" style="display:none" >
+
         <div class="container top">
           <div class="row">
               <div class="row">
                 <div class="col-md-8 col-md-offset-2">
                   <div class="panel panel-default">
                     <div class="panel-body">
-        
+
                       @if ($errors->any())
                         <div class="alert alert-danger">
                           <button type="button" class="close" data-dismiss="alert">&times;</button>
-                          <strong>Por favor corrige los siguentes errores:</strong>
+                          <strong>Please fix the errors</strong>
                           <ul>
                           @foreach ($errors->all() as $error)
                             <li>{{ $error }}</li>
@@ -199,50 +199,22 @@
                           </ul>
                         </div>
                       @endif
-                      
-                      {{ Form::open(['route' => 'asignarTarea', 'method' => 'POST', 'role' => 'form','files' => true]) }}
-                        {{ Form::hidden('admin_id', Auth::user()->id ) }}
-                        {{ Form::hidden('estatus', 'enproceso' ) }}
+
+                      {{ Form::open(['route' => 'createClass', 'method' => 'POST', 'role' => 'form','files' => true]) }}
+
                         </br>
-                        {{ Form::label('Folio', 'Folio')}}
-                        {{ Form::text('folio','', ['id' => 'folio', 'class' => 'form-control', 'placeholder' => 'Folio', 'autofocus' => '']) }}
+                        {{ Form::label('Name Class', 'Name Class')}}
+                        {{ Form::text('nombre','', ['id' => 'nombre', 'class' => 'form-control', 'placeholder' => 'Nombre', 'autofocus' => '']) }}
                         </br>
-                        {{ Form::label('Oficio Referencia', 'Oficio Referencia')}}
-                        {{ Form::text('oficio_referencia','', ['id' => 'oficio_referencia', 'class' => 'form-control', 'placeholder' => 'Oficio Referencia', 'autofocus' => '']) }}
+                        {{ Form::label('Credits', 'Credits')}}
+                        {{ Form::text('creditos','', ['id' => 'creditos', 'class' => 'form-control', 'placeholder' => 'creditos', 'autofocus' => '']) }}
                         </br>
-                        {{ Form::label('Asunto', 'Asunto')}}
-                        {{ Form::text('asunto', '', ['id' => 'asunto', 'class' => 'form-control', 'placeholder' => 'Asunto', 'autofocus' => '']) }}
+                        {{ Form::label('Start Date', 'Start Date')}}
+                        {{ Form::custom('hora_inicio', 'time', 'hora_inicio') }}
+
                         </br>
-                        {{ Form::label('Fecha de Recepción', 'Fecha Recepción')}}
-                        {{ Form::custom('datepicker', 'date', 'fecha_recepcion') }}
-                        {{ Form::label('Fecha de respuesta', 'Fecha Respuesta')}}
-                        <!-- class , type, name -->
-                        {{ Form::custom('datepicker', 'date', 'fecha_respuesta') }}
-                        </br>
-                        {{ Form::label('Area Generadora', 'Area Generadora')}}
-                        {{ Form::text('area_generadora','', ['id' => 'area_generadora', 'class' => 'form-control', 'placeholder' => 'Area Generadora', 'autofocus' => '']) }}
-                        </br>
-                        {{ Form::label('Nombre del titular', 'Nombre del Titular')}}
-                        {{ Form::text('nombre_titular', '', ['id' => 'nombre_titular', 'class' => 'form-control', 'placeholder' => 'Nombre Titular', 'autofocus' => '']) }}
-                        </br>
-                        {{ Form::label('Asignado a', 'Asignado a')}}
-                        <select id="usuarios" name="user_id">
-                          <option>Por favor elige una opción</option>
-                        </select>
-                        </br>
-                        </br>
-                        {{ Form::label('Ubicación Topografica', 'Ubicación Topografica')}}
-                        {{ Form::text('ubicacion_topografica','', ['id' => 'ubicacion_topografica', 'class' => 'form-control', 'placeholder' => 'Ubicacion Topografica', 'autofocus' => '']) }}
-                        
-                        </br>
-                        {{ Form::label('Estatus', 'Estatus')}}
-                        <select id="estatus" name="estatus">
-                          <option>En seguimiento</option>
-                        </select>
-                        </br>
-                        </br>
-                        {{ Form::file('filePdf',  ['id' => 'filePdf']) }}
-                        </br>
+                        {{ Form::label('End Date', 'End Date')}}
+                        {{ Form::custom('hora_fin', 'time', 'hora_fin') }}
                         <p class="center">
                           <input type="submit" value="Asignar Tarea" class="btn btn-success">
                         </p>
@@ -253,7 +225,7 @@
               </div>
           </div>
         </div>
-     
+
       </section>
       <!--Vista que te permite crear un usuario-->
       <section id="registrarUsuario" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 ocultar spin" style="display:none" >
@@ -274,10 +246,10 @@
                           </ul>
                         </div>
                       @endif
-                     
+
                       {{ Form::open(['route' => 'register', 'method' => 'POST', 'role' => 'form']) }}
 
-                      
+
                       {{ Form::label('Nombre', 'Nombre')}}
                       {{ Form::text('first_name', null, ['class' => 'form-control', 'placeholder' => 'Nombre', 'autofocus' => '']) }}
 
@@ -313,7 +285,7 @@
       <!--Vista lista los usuarios-->
       <section id="listarUsuarios" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 ocultar" style="display:none" >
         <div class="fluid top">
-         
+
          <table class="table table-hover">
             <thead>
               <tr>
@@ -322,11 +294,11 @@
                 <th>Email</th>
                 <th>Username</th>
                 <th></th>
-                
+
               </tr>
             </thead>
             <tbody id="listUsers">
-              
+
             </tbody>
           </table>
         </div>
@@ -335,7 +307,7 @@
       <!--Limpiar Espacio en Disco Duro-->
       <!--<section id="limpiarEspacio" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 ocultar spin" style="display:none" >
           <div class="col-md-4 col-md-offset-4">
-            
+
             <div onclick="cleanDD()">Limpiar</div>
         </div>
       </section>-->
@@ -343,7 +315,7 @@
       <!--Ver detalle tarea-->
       <section id="verDetalleTarea" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 ocultar spin" style="display:none" >
           <div class="fluid">
-            
+
             <div id="detailsTask">
 
             </div>
@@ -357,7 +329,7 @@
       <section id="rechazarTarea" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 ocultar spin" style="display:none" >
         <div class="fluid">
           <div id="showRejectTask"></div>
-       
+
         </div>
       </section>
 

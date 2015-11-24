@@ -50,9 +50,9 @@ class User extends Eloquent implements UserInterface, RemindableInterface, Stapl
 
 	protected $hidden = array('password', 'remember_token');
 
-	public function tareas()
+	public function materias()
     {
-        return $this->has_many('Tarea');
+        return $this->has_many('Materia');
     }
 
     /**
@@ -62,7 +62,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface, Stapl
     {
         return $this->belongsToMany('Role', 'users_roles');
     }
- 
+
     /**
      * Find out if User is an employee, based on if has any roles
      *
@@ -73,7 +73,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface, Stapl
         $roles = $this->roles->toArray();
         return !empty($roles);
     }
- 
+
     /**
      * Find out if user has a specific role
      *
@@ -83,7 +83,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface, Stapl
     {
         return in_array($check, array_fetch($this->roles->toArray(), 'name'));
     }
- 
+
     /**
      * Get key in array with corresponding value
      *
@@ -96,19 +96,19 @@ class User extends Eloquent implements UserInterface, RemindableInterface, Stapl
                 return $key+1;
             }
         }
- 
+
         throw new UnexpectedValueException;
     }
- 
+
     /**
      * Add roles to user to make them a concierge
      */
     public function makeRole($title)
     {
         $assigned_roles = array();
- 
+
         $roles = array_fetch(Role::all()->toArray(), 'name');
- 
+
         switch ($title) {
             case 'super_admin':
               	//$assigned_roles = array(1);
@@ -121,7 +121,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface, Stapl
             default:
                 throw new \Exception("The employee status entered does not exist");
         }
- 
+
         $this->roles()->attach($assigned_roles);
     }
 }

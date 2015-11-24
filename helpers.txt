@@ -1,0 +1,8 @@
+/*************** rewrite php mcrypt ********************/
+
+sudo brew link mcrypt
+
+if above does not work then try the following command:
+
+sudo brew link --overwrite mcrypt
+/********************************************************/

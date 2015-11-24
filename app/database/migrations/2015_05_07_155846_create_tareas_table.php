@@ -13,23 +13,15 @@ class CreateTareasTable extends Migration {
 	public function up()
 	{
 
-		Schema::create('tareas', function(Blueprint $table) {		
-			
+		Schema::create('materias', function(Blueprint $table) {
+
 			$table->increments('id')->unsigned();
-			$table->integer('folio')->nullable()->unique();
-			$table->string('asunto')->nullable();
-			$table->string('oficio_referencia')->nullable();
-			$table->dateTime('fecha_recepcion')->nullable();
-			$table->dateTime('fecha_respuesta')->nullable();
-			$table->string('area_generadora')->nullable();
-			$table->string('nombre_titular')->nullable();
-			$table->string('ubicacion_topografica')->nullable();
-			$table->string('estatus')->nullable();
-			$table->string('directoryFile');
-			$table->string('directoryResponseFile');
-			$table->integer('admin_id')->unsigned();
+			$table->integer('nombre')->nullable()->unique();
+			$table->string('creditos')->nullable();
+			$table->dateTime('hora_inicio')->nullable();
+			$table->dateTime('hora_fin')->nullable();
 			$table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users');
+      $table->foreign('user_id')->references('id')->on('users');
 
 		});
 	}
@@ -41,7 +33,7 @@ class CreateTareasTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('tareas');
+		Schema::drop('materias');
 	}
 
 }

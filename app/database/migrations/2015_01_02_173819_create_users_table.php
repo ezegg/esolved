@@ -12,7 +12,7 @@ class CreateUsersTable extends Migration {
 	 */
 	public function up()
 	{
-		/*Schema::create('users', function(Blueprint $table)
+		Schema::create('users', function(Blueprint $table)
 		{
 			$table->increments('id');
 			$table->string('first_name');
@@ -26,9 +26,9 @@ class CreateUsersTable extends Migration {
 			$table->string('avatar_content_type')->nullable();
 			$table->timestamp('avatar_updated_at')->nullable();
 			$table->timestamps();
-		});*/
+		});
 
-		
+
 	}
 
 	/**
@@ -39,7 +39,7 @@ class CreateUsersTable extends Migration {
 	public function down()
 	{
 
-		//Schema::drop('users');
+		Schema::drop('users');
 	}
 
 }

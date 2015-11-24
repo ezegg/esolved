@@ -55,9 +55,9 @@ return array(
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
-			'database'  => 'bdincan',
+			'database'  => 'esolved',
 			'username'  => 'root',
-			'password'  => '',
+			'password'  => 'root',
 			'unix_socket'   => '/Applications/MAMP/tmp/mysql/mysql.sock',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',

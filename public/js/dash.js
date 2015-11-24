@@ -35,6 +35,7 @@ $(document).ready(function() {
         dateFormat: 'yy-mm-dd'
     });
     $("form").submit(function(event) {
+        var targe4 = document.getElementById('main');
         var target = document.getElementById('asignarTarea');
         var target1 = document.getElementById('updateUser');
         var target2 = document.getElementById('registrarUsuario');
@@ -43,6 +44,7 @@ $(document).ready(function() {
         var spinner1 = new Spinner(opts).spin(target1);
         var spinner2 = new Spinner(opts).spin(target2);
         var spinner3 = new Spinner(opts).spin(target3);
+        var spinner4 = new Spinner(opts).spin(target4);
     });
 });
 
@@ -57,6 +59,10 @@ function addClassActive(id) {
     $('.nav-sidebar > li').removeClass('active');
     $('.nav-sidebar > li#' + id).addClass('active');
 }
+
+
+
+
 
 function getUsers() {
     //console.debug('va a cambiar');
@@ -330,7 +336,7 @@ function getTaskDetailsById(id) {
                                     "</div>"+
                                 "</div>"+
                             "</div>"+
-                        "</div>"+         
+                        "</div>"+
                     "</form>");
             }
         },
@@ -414,7 +420,7 @@ function getTaskDetailsByIdOperative(id) {
                                                     "<label for='Fecha de Recepción'Nombre titular:" + item.nombre_titular + "</label>" +
                                                     "<br>" +
                                                     "<label for='Fecha de Recepción'>Ubicacion topografica:" + item.ubicacion_topografica + "</label>" +
-                                                    "<br>" +                                                
+                                                    "<br>" +
                                                     "<label for='Estatus'>Estatus</label>" +
                                                     "<select id='estatus' name='estatus'>" +
                                                     "<option selected>"+item.estatus+"</option>" +
@@ -429,13 +435,13 @@ function getTaskDetailsByIdOperative(id) {
                                                     "<p class='center'>" +
                                                     "<input type='submit' value='Actualizar Tarea' class='btn btn-success'>" +
                                                     "</p>" +
-                                                  
+
                                                 "</div>"+
                                             "</div>"+
                                         "</div>"+
                                     "</div>"+
                                 "</div>"+
-                        "</div>"+                    
+                        "</div>"+
                     "</form>");
             }
         },
@@ -453,7 +459,7 @@ function showRejectTask(id){
             model.empty();
             model.append("<form method='POST' id='sendRejectTask' action='" + base_url + "sendRejectTask/" + id + "'  accept-charset='UTF-8' role='form' enctype='multipart/form-data' class='fluid'>" +
                 "</br><span>Lo sentimos quizás esta mal asignada esta tarea. Escribe tus comentarios por favor.</span>"+
-                "<textarea id='comentariosRechazarTarea' class='form-control fluid' placeholder='Comentarios... ' name='comentarios'></textarea>"+      
+                "<textarea id='comentariosRechazarTarea' class='form-control fluid' placeholder='Comentarios... ' name='comentarios'></textarea>"+
                 "</form>"+
                 "<div class='center'><button type='button' class='btn btn-success' onclick='sendRejectTask("+id+");'>Rechazar esta tarea</button></div>");
 }
@@ -461,7 +467,7 @@ function showRejectTask(id){
 function sendRejectTask(id){
     var target = document.getElementById('sendRejectTask');
     var spinner = new Spinner(opts).spin(target);
-    
+
     var comentarios = $('#comentariosRechazarTarea').val();
     var DATA = 'id='+id+'&comentarios='+comentarios;
     //alert(DATA)
@@ -479,7 +485,7 @@ function sendRejectTask(id){
             };
             //alert(data)
             spinner.stop();
-            
+
         },
         error: function( xhr, ajaxOptions, thrownError ){
             spinner.stop();
@@ -510,7 +516,7 @@ function search () {
             };
             //alert(data)
             spinner.stop();
-            
+
         },
         error: function( xhr, ajaxOptions, thrownError ){
             spinner.stop();
