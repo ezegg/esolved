@@ -16,7 +16,7 @@ class CreateTareasTable extends Migration {
 		Schema::create('materias', function(Blueprint $table) {
 
 			$table->increments('id')->unsigned();
-			$table->integer('nombre')->nullable()->unique();
+			$table->String('nombre')->nullable()->unique();
 			$table->string('creditos')->nullable();
 			$table->time('hora_inicio')->nullable();
 			$table->time('hora_fin')->nullable();
