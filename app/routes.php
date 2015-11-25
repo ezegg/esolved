@@ -42,7 +42,7 @@ Route::group(['before' => 'auth'], function()
   Route::get('getClassesByAdministrador', 'MateriaController@getClassesByAdministrador');
   Route::get('deleteClass/{id}', 'MateriaController@deleteClass');
   Route::get('getClassesByAlumno', 'MateriaController@getClassesByAlumno');
-
+  Route::get('getClassById/{id}', 'MateriaController@getClassById');
 
 	Route::get('getUsers', 'UserController@getUsers');
 	Route::get('getTasks', 'TareasController@getTasks');

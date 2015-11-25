@@ -218,6 +218,40 @@ function addClassRequired(item) {
 
 }
 
+function addClassMySchedule(id) {
+  $.ajax({
+      type: "GET",
+      url: base_url + "getClassById/"+id,
+      success: function(data) {
+          var model = $('#schedule');
+          for (var i in data.class) {
+            var item = data.class[i];
+
+            if (item.days == "1") {
+              model.append("<tr><th class='center'>" + item.hora_inicio+ '-' + item.hora_fin + "</th>" +
+                  "<th class='center'>" + item.nombre + "</th>" +
+                  "<th class='center'></th>" +
+                  "<th class='center'>" + item.nombre + "</th>"+
+                  "<th class='center'></th>" +
+                  "<th class='center'>" + item.nombre + "</th>");
+            } else {
+              model.append("<tr><th class='center'>" + item.hora_inicio+ '-' + item.hora_fin + "</th>" +
+                  "<th class='center'></th>" +
+                  "<th class='center'>" + item.nombre + "</th>" +
+                  "<th class='center'></th>"+
+                  "<th class='center'>" + item.nombre + "</th>" +
+                  "<th class='center'></th>");
+            }
+          }
+      },
+      error: function(xhr, ajaxOptions, thrownError) {
+          generate('error', 'Lo siento no fue posible mostrar los usuarios');
+      }
+  });
+}
+
+function needCheckAvailableAndCredits
+
 
 
 /******************************************************/

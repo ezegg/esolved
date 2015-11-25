@@ -62,11 +62,13 @@
               <a href="#" onclick="showView('limpiarEspacio','ocultar');addClassActive('liLimpiarEspacio','lis')">Limpiar DD</a>
             </li>-->
             @endif
+            @if (Auth::user()->hasRole('alumno'))
             <div class="row">
               <section id="classes">
 
               </section>
             </div>
+            @endif
             <!--<li><a href="#">favorites</a></li>
             <li><a href="#">Recommended</a></li>-->
           </ul>
