@@ -51,4 +51,13 @@ class MateriaController extends \BaseController {
     $user->delete();
   }
 
+	public function getClassesByAlumno()
+  {
+    $classes = DB::table('materias')
+      ->get(['id', 'nombre','creditos', 'hora_inicio', 'hora_fin', 'obligatorio', 'days']);
+    return Response::json(array(
+      'classes' =>  $classes
+    ));
+  }
+
 }

@@ -28,6 +28,7 @@ function loadSpinner() {
 
 $(document).ready(function() {
     getClassesByAdministrador();
+    getClassesByAlumno();
 
 
     /*getUsers();
@@ -150,6 +151,74 @@ function deleteClass(id) {
         }
     });
 }
+
+function getClassesByAlumno() {
+    //console.debug('va a cambiar');
+    $.ajax({
+        type: "GET",
+        url: base_url + "getClassesByAlumno",
+        success: function(data) {
+            //console.log(data);
+            var model = $('#classes');
+            model.empty();
+            for (var i in data.classes) {
+              var item = data.classes[i];
+
+              if (item.obligatorio == 1) {
+                addClassRequired(item);
+              } else {
+                if (item.days == 1) {
+                  var days = "MWF";
+                } else {
+                  var days = "TTh";
+                }
+                var required = "";
+                model.append("<div class='center col-md-12'>" + item.nombre + "</div>" +
+                    "<div class='center col-md-12'>" + item.creditos + "</div>" +
+                    "<div class='center col-md-4'>" + item.hora_inicio + "</div>" +
+                    "<div class='center col-md-4'>" + item.hora_fin + "</div>"+
+                    "<div class='center col-md-4'>" + days + "</div>"+
+                    required+
+                    "<div class='center col-md-12'><button type='button' class='btn btn-info' onclick='addClassMySchedule(" + item.id + ")'>Add</button></div>");
+              }
+
+
+            }
+        },
+        error: function(xhr, ajaxOptions, thrownError) {
+            generate('error', 'Lo siento no fue posible mostrar los usuarios');
+        }
+    });
+}
+
+function addClassRequired(item) {
+  //alert('entro');
+  var model = $('#schedule');
+  //model.empty();
+  if (item.obligatorio == 1) {
+    var required = "<th class='center'><span>Required</span></th>";
+  } else {
+    var required = "<th class='center'></th>";
+  }
+  if (item.days == "1") {
+    model.append("<tr><th class='center'>" + item.hora_inicio+ '-' + item.hora_fin + "</th>" +
+        "<th class='center'>" + item.nombre + "</th>" +
+        "<th class='center'></th>" +
+        "<th class='center'>" + item.nombre + "</th>"+
+        "<th class='center'></th>" +
+        "<th class='center'>" + item.nombre + "</th>");
+  } else {
+    model.append("<tr><th class='center'>" + item.hora_inicio+ '-' + item.hora_fin + "</th>" +
+        "<th class='center'></th>" +
+        "<th class='center'>" + item.nombre + "</th>" +
+        "<th class='center'></th>"+
+        "<th class='center'>" + item.nombre + "</th>" +
+        "<th class='center'></th>");
+  }
+
+}
+
+
 
 /******************************************************/
 function getUsers() {

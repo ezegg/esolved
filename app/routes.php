@@ -41,6 +41,7 @@ Route::group(['before' => 'auth'], function()
 	Route::post('createClass', ['as' => 'createClass', 'uses' => 'MateriaController@createClass' ] );
   Route::get('getClassesByAdministrador', 'MateriaController@getClassesByAdministrador');
   Route::get('deleteClass/{id}', 'MateriaController@deleteClass');
+  Route::get('getClassesByAlumno', 'MateriaController@getClassesByAlumno');
 
 
 	Route::get('getUsers', 'UserController@getUsers');

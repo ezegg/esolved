@@ -30,26 +30,6 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <!--<li><a href="#">Dashboard</a></li>
-            <li><a href="#">Settings</a></li>
-            <li>
-              <div>
-                  <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav pull-right">
-                      <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                          <span class="icon icon-wh i-profile">{{ Auth::user()->username }} </span><span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-
-                          <li><a onclick="showView('updateUser','ocultar')">Editar usuario</a></li>
-                          <li><a href="{{ action('AuthController@logout') }}">Salir</a></li>
-                        </ul>
-                      </li>
-                    </ul>
-                  </div>
-              <div>
-            </li>-->
             @if(Auth::check())
               <li><a href="#">{{ Auth::user()->first_name }}</a></li>
               <li><a href="#" onclick="showView('updateUser','ocultar')">Profile</a></li>
@@ -82,6 +62,11 @@
               <a href="#" onclick="showView('limpiarEspacio','ocultar');addClassActive('liLimpiarEspacio','lis')">Limpiar DD</a>
             </li>-->
             @endif
+            <div class="row">
+              <section id="classes">
+
+              </section>
+            </div>
             <!--<li><a href="#">favorites</a></li>
             <li><a href="#">Recommended</a></li>-->
           </ul>
@@ -125,17 +110,17 @@
             <table class="table table-hover">
               <thead>
                 <tr>
-                  <th class="center">Folio</th>
-                  <th class="center">Oficio Referencia </th>
-                  <th class="center">Asunto</th>
-                  <th class="center">Asignado a</th>
-                  <th class="center">Semáforo</th>
-                  <th class="center"></th>
-                  <th class="center"></th>
+                  <th class="center">Schedule</th>
+                  <th class="center">Monday</th>
+                  <th class="center">Tuesday</th>
+                  <th class="center">Wednesday</th>
+                  <th class="center">Thursday</th>
+                  <th class="center">Friday</th>
 
                 </tr>
               </thead>
-              <tbody id="tasks" style="font-size:12px;">
+              <tbody id="schedule" style="font-size:12px;">
+
 
               </tbody>
             </table>
