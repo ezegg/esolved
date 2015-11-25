@@ -45,6 +45,29 @@ function notyButtonsDeleteClass(type, layout, id) {
     });
 }
 
+function notyButtonsCantAddClass(type, layout, id) {
+    var n = noty({
+        text        : 'you can´t add this class :(',
+        type        : type,
+        dismissQueue: true,
+        layout      : layout,
+        theme       : 'defaultTheme',
+        buttons     : [
+            {addClass: 'btn btn-primary', text: 'Ok', onClick: function ($noty) {
+                $noty.close();
+                //noty({dismissQueue: true, force: true, layout: layout, theme: 'defaultTheme', text: 'Lo has confirmado', type: 'success'});
+                deleteClass(id);
+            }
+            },
+            {addClass: 'btn btn-danger', text: 'Cancel', onClick: function ($noty) {
+                $noty.close();
+                //noty({dismissQueue: true, force: true, layout: layout, theme: 'defaultTheme', text: 'Cancelado', type: 'error'});
+            }
+            }
+        ]
+    });
+}
+
 function notyButtonsDeleteTask(type, layout, id) {
     var n = noty({
         text        : 'Confirmación',

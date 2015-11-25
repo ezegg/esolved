@@ -21,7 +21,8 @@ var opts = {
 /*Necesario para el spinner*/
 
 PageModel = {
-    countCredits: 0
+    countCredits: 0,
+    flag:0//that means is available
 };
 
 function loadSpinner() {
@@ -232,28 +233,54 @@ function addClassMySchedule(id) {
       url: base_url + "getClassById/"+id,
       success: function(data) {
           var model = $('#schedule');
+          var firstTime = 0;
           for (var i in data.class) {
             var item = data.class[i];
 
-            if (item.days == "1") {
-              model.append("<tr><th class='center' id='"+item.id+"'>" + item.hora_inicio+ '-' + item.hora_fin + "</th>" +
-                  "<th class='center'>" + item.nombre + "</th>" +
-                  "<th class='center'></th>" +
-                  "<th class='center'>" + item.nombre + "</th>"+
-                  "<th class='center'></th>" +
-                  "<th class='center'>" + item.nombre + "</th>");
-                  PageModel.countCredits += parseInt(item.creditos);
-            } else {
-              model.append("<tr><th class='center' id='"+item.id+"'>" + item.hora_inicio+ '-' + item.hora_fin + "</th>" +
-                  "<th class='center'></th>" +
-                  "<th class='center'>" + item.nombre + "</th>" +
-                  "<th class='center'></th>"+
-                  "<th class='center'>" + item.nombre + "</th>" +
-                  "<th class='center'></th>");
-                  PageModel.countCredits += parseInt(item.creditos);
+            if ((item.id == 3 || item.id == 6) && PageModel.flag == 0) {
+              PageModel.flag = item.id;
+              if (item.days == "1") {
+                model.append("<tr><th class='center' id='"+item.id+"'>" + item.hora_inicio+ '-' + item.hora_fin + "</th>" +
+                    "<th class='center'>" + item.nombre + "</th>" +
+                    "<th class='center'></th>" +
+                    "<th class='center'>" + item.nombre + "</th>"+
+                    "<th class='center'></th>" +
+                    "<th class='center'>" + item.nombre + "</th>");
+                    PageModel.countCredits += parseInt(item.creditos);
+              } else {
+                model.append("<tr><th class='center' id='"+item.id+"'>" + item.hora_inicio+ '-' + item.hora_fin + "</th>" +
+                    "<th class='center'></th>" +
+                    "<th class='center'>" + item.nombre + "</th>" +
+                    "<th class='center'></th>"+
+                    "<th class='center'>" + item.nombre + "</th>" +
+                    "<th class='center'></th>");
+                    PageModel.countCredits += parseInt(item.creditos);
+              }
+            } else if ((item.id == 3 || item.id == 6) && PageModel.flag != 0) {
+              console.debug('lo siento no se puede agregar esta clase')
+              notyButtonsCantAddClass('error', 'topCenter', null);
+            } else if (item.id != 3 || item.id != 6) {
+              if (item.days == "1") {
+                model.append("<tr><th class='center' id='"+item.id+"'>" + item.hora_inicio+ '-' + item.hora_fin + "</th>" +
+                    "<th class='center'>" + item.nombre + "</th>" +
+                    "<th class='center'></th>" +
+                    "<th class='center'>" + item.nombre + "</th>"+
+                    "<th class='center'></th>" +
+                    "<th class='center'>" + item.nombre + "</th>");
+                    PageModel.countCredits += parseInt(item.creditos);
+              } else {
+                model.append("<tr><th class='center' id='"+item.id+"'>" + item.hora_inicio+ '-' + item.hora_fin + "</th>" +
+                    "<th class='center'></th>" +
+                    "<th class='center'>" + item.nombre + "</th>" +
+                    "<th class='center'></th>"+
+                    "<th class='center'>" + item.nombre + "</th>" +
+                    "<th class='center'></th>");
+                    PageModel.countCredits += parseInt(item.creditos);
             }
+
+            countCredits();
           }
-          countCredits();
+        }
       },
       error: function(xhr, ajaxOptions, thrownError) {
           generate('error', 'Lo siento no fue posible mostrar los usuarios');

@@ -138,7 +138,7 @@
           <div class="container-fluid center">
             </br>
             </br>
-            <img class="img-circle" src="{{asset(Auth::user()->avatar->url('thumb')) }}" >
+            <!--<img class="img-circle" src="{{asset(Auth::user()->avatar->url('thumb')) }}" >-->
 
             {{ Form::open(['route' => 'uploadImage', 'method' => 'POST', 'files' => true,'role' => 'form']) }}
               {{ Form::hidden('id', Auth::user()->id ) }}
