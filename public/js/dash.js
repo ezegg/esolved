@@ -34,27 +34,6 @@ function loadSpinner() {
 $(document).ready(function() {
     getClassesByAdministrador();
     getClassesByAlumno();
-
-
-    /*getUsers();
-    getTasks();
-    getTasksSuperAdmin();
-    listUsers();
-    $(".datepicker").datepicker({
-        dateFormat: 'yy-mm-dd'
-    });
-    $("form").submit(function(event) {
-        var target4 = document.getElementById('main');
-        var target = document.getElementById('asignarTarea');
-        var target1 = document.getElementById('updateUser');
-        var target2 = document.getElementById('registrarUsuario');
-        var target3 = document.getElementById('sendRejectTask');
-        var spinner = new Spinner(opts).spin(target);
-        var spinner1 = new Spinner(opts).spin(target1);
-        var spinner2 = new Spinner(opts).spin(target2);
-        var spinner3 = new Spinner(opts).spin(target3);
-        var spinner4 = new Spinner(opts).spin(target4);
-    });*/
 });
 
 function showView(id, clases) {
@@ -286,10 +265,6 @@ function addClassMySchedule(id) {
           generate('error', 'Lo siento no fue posible mostrar los usuarios');
       }
   });
-}
-
-function needCheckAvailable(){
-
 }
 
 function countCredits() {
