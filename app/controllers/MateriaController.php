@@ -63,7 +63,7 @@ class MateriaController extends \BaseController {
 	public function getClassById($id){
 		$class = DB::table('materias')
     ->where('materias.id', $id)
-    ->get(['id', 'nombre','hora_inicio', 'hora_fin', 'days']);
+    ->get(['id', 'nombre', 'creditos', 'hora_inicio', 'hora_fin', 'days']);
     return Response::json(array(
       'class' =>  $class
     ));
